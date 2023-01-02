@@ -15,7 +15,6 @@ We then compare the performance of each model to determine which has sufficient 
 
 
 ## Data
-### Data used
 The NFHS data was provided courtesy of the United States National Center for Health Statistics for a [data science practice competition](https://www.drivendata.org/competitions/66/flu-shot-learning/) hosted by DrivenData. Each survey respondents where asked whether they had received H1N1 and seasonal flu vaccines and additional questions about themselves such as social, economic and demographic background, opinions on risks of illness and vaccine effectiveness, and behaviours towards mitigating tranmission. 
 
 Given the focus of this exercise is on seasonal flu vaccine prediction, H1N1 specific data included in the NFHS data is dropped and not used for fitting machine learning model.
