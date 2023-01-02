@@ -3,7 +3,7 @@
 
 ## Introduction
 
-This exercise predicts whether individuals will receive their seasonal flu vaccine by fitting machine learning model to the phone survey data collected in the United States National 2009 H1N1 Flu Survey (NFHS)[^1]. We consider three machine learning models:
+This exercise predicts whether individuals will receive their seasonal flu vaccine by fitting machine learning model to the vaccination data collected in the United States National 2009 H1N1 Flu Survey (NFHS)[^1]. We consider three machine learning models:
 
 * Model 1: Support vector classifier learning model
 * Model 2: Random forest classsifier learning model
@@ -20,6 +20,8 @@ The NFHS data was provided courtesy of the United States National Center for Hea
 Given the focus of this exercise is on seasonal flu vaccine prediction, H1N1 specific data included in the NFHS data is dropped and not used for fitting machine learning model.
 
 ### Data checking and cleaning
+
+
 
 ### Data exploration
 
