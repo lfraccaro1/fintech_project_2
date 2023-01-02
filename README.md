@@ -1,4 +1,4 @@
-#  Seasonal Flu Vaccines [^1]
+#  Seasonal Flu Vaccines[^1]
 *12 January 2022, By Kit N., Lucas F. and Navpreet N.*
 
 [^1]: This is a active practice data science competition hosted by DrivenData. The competition is titled ["Flu Shot Learning: Predict H1N1 and Seasonal Flu Vaccines"](https://www.drivendata.org/competitions/66/flu-shot-learning/).
