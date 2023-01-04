@@ -22,8 +22,52 @@ We then compare the performance of each model to determine which has sufficient 
 
  This dataset is a copy shared by the United States National Center for Health Statistics for a data science practice competition hosted by [DrivenData](https://www.drivendata.org/competitions/66/flu-shot-learning/).
 
- Given the focus of this exercise is on seasonal flu vaccination prediction, H1N1 specific data included in the NFHS data is dropped and not used for fitting machine learning model. After removing H1N1 specific variables, the starting point is a dataset with 30 columns. The first column "respondent_id" is a unique identifier. The table below describes the remaining columns: <br>
+ Given the focus of this exercise is on seasonal flu vaccination prediction, H1N1 specific data included in the NFHS data is dropped and not used for fitting machine learning model. After removing H1N1 specific variables, the starting point is a dataset with 30 columns. The first column "respondent_id" is a unique identifier. The remaining columns include answer to additional questions asked in the survey. [Appendix 1](#appendix-1) describes the features in detail. <br>
  
+### Data checking and cleaning
+The following summarises the data checking and cleaning performed:
+* **Class balance** <br>
+<img src="./Diagram/chk_balance_class.jpg" alt="drawing" width="280" height = "100"/> <br>
+"seasonal_vaccine" target variable has balanced class.
+
+* Missing value
+
+
+### Exploring the data
+
+
+## Build and Train Machine Learning Model
+### Establish the baseline model
+
+### Tune the baseline
+#### i. Features Selection
+
+
+
+#### ii. Hyperparameters tuning with RandomizedSearchCV
+
+
+
+#### iii. Hyperparameters tuning with GridSearchCV
+
+
+
+### Evaluate the performance of each model
+
+
+
+### An alternate: Deep Learning Model
+
+
+
+*future development needed?*
+
+## Conclusion
+
+
+## Appendix 1
+The table below describes the features included in the dataset.
+
  |Feature name                  | Description                                                                 |
  |------------------------------|-----------------------------------------------------------------------------|
  |behavioural_antiviral_meds    | Has taken antiviral medications. (binary)                                   |
@@ -54,21 +98,6 @@ We then compare the performance of each model to determine which has sufficient 
  |household_children            | Number of children in household, top-coded to 3.                             |
  |employment_industry           | Type of industry respondent is employed in. Values are represented as short random character strings.|
  |employment_occupation         | Type of occupation of respondent. Values are represented as short random character strings.|
-
-### Data checking and cleaning
-
-
-### Data exploration
-
-
-## Machine Learning Model
-
-
-*future development needed?*
-
-## Conclusion
-
-
 
 ## References
 * https://www.drivendata.org/competitions/66/flu-shot-learning/
