@@ -82,11 +82,19 @@ In the end, this method achieved 75.9% accuracy, a slight improvement on our bas
 ### Evaluate the performance of each model
 In this project, we built a baseline random forest machine learning model and three additional models based on feature selection, RandomizedSearchCV and GridSearchCV. The goal of the project was to evaluate the impact of these techniques on the model's performance, as measured by accuracy score. 
 
-After building all the model's, we discovered that all four achieved similar accuracy scores. This suggests that the techniques we used to tune the model did not significantly improve the model's performance on the dataset. 
+After evaluating the performance of our random forest model with various methods of model tuning, we found that hyperparameter tuning using RandomizedSearchCV was the most effective at improving the accuracy of our model. Specifically, tuning the n_estimators, max_features, and min_samples_split hyperparameters resulted in an accuracy score of 76.15%, higher than both the baseline model and the model tuned by limiting the number of features.
 
-One possible explanation for this is that the baseline model was already well-tuned and didn't have much room to improve. On the other hand, it could also be that the hyperparameters we selected in our tuning methods were not optimal for this dataset. 
+Although GridSearchCV also resulted in a slightly higher accuracy score than the baseline model, it was not as effective as RandomizedSearchCV and was more resource intensive due to its comprehensive search of all possible hyperparameter combinations.
+
+Limiting the number of features resulted in a slight decrease in accuracy, but resulted in a simpler and faster model. This method may be useful in cases where computational resources are limited or when interpretability of the model is a priority.
+
+One possible explanation for these results is that the baseline model was already well-tuned and didn't have much room to improve. On the other hand, it could also be that the hyperparameters we selected in our tuning methods were not optimal for this dataset. 
 
 Future work could include trying different model configurations or algorithms, and looking at different feature subsets to train the model on. It would also be useful to evaluate the models using additional performance metrics, such as precision, recall, and F1 score, to get a more complete understanding of the models' performance. 
+
+Overall, our results suggest that hyperparameter tuning is a useful method for improving the performance of a random forest model, with RandomizedSearchCV being the most effective and efficient approach in our case.
+
+
 
 
 ### An alternate: Deep Learning Model
