@@ -45,7 +45,7 @@ The baseline model is a random forest learning model. The reasons for random for
 
 We fit the baseline model to the full set of features in the cleaned NFHS data. The baseline performance is summarised below. <br>
 <img src="./Diagram/class_rpt_baseline.jpg" alt="drawing" width="300" height = "130"/>
-* The baseline model has an accuracy score of 0.7613.
+* The baseline model has an accuracy score of 76.13%
 
 
 ### Tune the baseline
@@ -55,19 +55,31 @@ In this section, ...
 Features selection involes reducing the number of input features used to train the model. To select which features to include, a correlation matrix is computed to identify the features that are most correlated to the target variable. Four features with the highest absolute correlation value are used to define a new set of features, reducing the number of input features from 54 to 4. <br>
 <img src="./Diagram/corr_matrix.jpg" alt="drawing" width="800" height = "600"/>
 
-The performance of the model using the reduced number of features is:
 
+Model using the new set of features has an accuracy score of 74.5%, slightly lower than baseline. This suggests the selected four features covered most of the explanatory percentage. Additional features may be correlated with the selected four features, or irrelevant to the target variable and hence only add marginally to the explanatory power. One advantage of using smaller set of features is that the model is simpler and faster to train and implement.
 
 
 #### ii. Hyperparameters tuning with RandomizedSearchCV
-RandomizedSearchCV is a library from SKLearn that allows a user to perform hyperparameter tuning on a given model by specifying a list of hyperparameter to tune and a list of possible values for each. It randomly selects a combination of hyperparameters from these lists and fits the model using them. The fitted model is then scored using cross-validation, and the process is repeated a number of times as defined by the user. The model that results in the highest mean score across the cross-validation folds is selected as the best model, and the best combination of hyperparameters is retained. 
+RandomizedSearchCV is a library from SKLearn that allows a user to perform hyperparameter tuning on a given model by specifying a list of hyperparameter to tune and a list of possible values for each. It randomly selects a combination of hyperparameters from these lists and fits the model using them. The fitted model is then scored using cross-validation, and the process is repeated a number of times as defined by the user. The model that results in the highest mean score across the cross-validation folds is selected as the best model, and the best combination of hyperparameters is retained. We explore tuning the following hyperparameters:
+* n_estimators (refers to the number of tress in the forest);
+* max_features (refers to the maximum number of features the model considers when looking for the best split at each tree node);
+* min_samples_split (refers to the minimum number of samples required at a node in order for the node to be split)
 
-
+We set up the search to train 20 models over 2 folds of cross-validation (resulting in fitting 40 models in total), scoring the best fit based on accuracy. The best fit model results in 76.15% accuracy score and the required hyperparameters are:
+* n_estimators = 441,
+* max_features = 14;
+* min_samples_split = 19.
 
 
 #### iii. Hyperparameters tuning with GridSearchCV
 GridSearchCV is another library from SKLearn that allows a user to perform hyperparameter tuning. It differs from RandomizedSearchCV in that it comprehensively searches over a specified hyperparameter grid, rather than randomly selecting a number from the specified ranges of hyperparamters given. 
 
+To use GridSearchCV, we use the following hyperparameters:
+* n_estimators = [200,500];
+* max_features = [10,15,20];
+* min_sample_split = [20,25,30].
+
+The algorithm looks at the model with highest mean score across the cross-validation folds and selects it as the best model, and the combination of hyperparameters is retained.
 
 ### Evaluate the performance of each model
 
