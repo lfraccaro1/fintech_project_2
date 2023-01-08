@@ -22,7 +22,7 @@ We then compare the performance of each model to determine which has sufficient 
 
  This dataset is a copy shared by the United States National Center for Health Statistics for a data science practice competition hosted by [DrivenData](https://www.drivendata.org/competitions/66/flu-shot-learning/).
 
- Given the focus of this exercise is on seasonal flu vaccination prediction, H1N1 specific data included in the NFHS data is dropped and not used for fitting machine learning model. After removing H1N1 specific variables, the starting point is a dataset with 30 columns. The first column "respondent_id" is a unique identifier. The remaining columns include answer to additional questions asked in the survey. [Appendix 1](#appendix-1) describes the features in detail. <br>
+ Given the focus of this exercise is on seasonal flu vaccination prediction, H1N1 specific data included in the NFHS data is dropped and not used for fitting machine learning model. After removing H1N1 specific variables, the starting point is a dataset with 31 columns. The first column "respondent_id" is a unique identifier. The remaining columns include answer to additional questions asked in the survey. [Appendix 1](#appendix-1) describes the features in detail. <br>
  
 ### Data checking and cleaning
 The following summarises the data checking and cleaning performed:
@@ -34,13 +34,14 @@ The following summarises the data checking and cleaning performed:
 
 **Strategy for handling missing values**
 * 3 features columns with more than 40% missing values are excluded from the modelling. These features are "health_insurance", "employment_industry" and "employment_occupation".
-* For the remaining features columns, missing values are replaced with the "most_frequent" value observed using sklearn.impute.SimpleImputer module. The most_frequent values are selected as it works well for both numerical and categorical variables.
+* For the remaining feature columns, missing values are replaced with the "most_frequent" value observed using sklearn.impute.SimpleImputer module. The most_frequent values are selected as it works well for both numerical and categorical variables.
 
 ### Exploring the data
-We study the vaccination pattern by plotting every single feature against the target variable. If a feature is correlated with the target, we expect to see different vaccination pattern as the values of the feature vary. Below are samples of the plot used to study the vaccination pattern.
+We study the vaccination pattern by plotting every single feature against the target variable. If a feature is correlated with the target, we expect to see different vaccination pattern as the values of the feature vary. 
+
+Below are samples of the plot used to study the vaccination pattern. Opinion questions seem to have high correlation with the target, but not sex.
 
 <img src="./Diagram/vacc_pattern.jpg" alt="drawing" width="750" height = "380"/>
-From the sample plots above, opinion questions seem to have high correlation with the target, but not sex.
 
 
 ## Build and Train Machine Learning Model
@@ -125,10 +126,11 @@ This is an improvement on the baseline model.
 
 * **Deep learning model** - 
 
-## Future Development
-
-
-
+## Future Work
+Future work could include:
+* explore different model configurations and/or algorithms;
+* explore different features sets using feature engineering technique to train the model;
+* evaluate the models using additional performance metrics such as precision, recall and F1 score to get a more complete understanding of the model's performance
 
 ## Conclusion
 
