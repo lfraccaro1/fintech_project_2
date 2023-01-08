@@ -32,10 +32,10 @@ The following summarises the data checking and cleaning performed:
 
 * **Data quality** - We check if there is any missing or null value, using the ".isnull.sum() syntax. Out of the 30 columns: <br> - 6 columns (including the target variable column) has no missing value; <br> - 3 feature columns have more than 40% missing values; and <br> - the remaining feature columns have low volume of missing values where the missing value percentages range between 0.1% and  17.0%. <br> <br> **Strategy for handling missing values** <br> - 3 features columns with more than 40% missing values are excluded from the modelling. These features are "health_insurance", "employment_industry" and "employment_occupation". <br> - For the remaining feature columns, missing values are replaced with the "most_frequent" value observed using sklearn.impute.SimpleImputer module. The most_frequent values are selected as it works well for both numerical and categorical variables.
 
-* **Data type** - We review the data type using the ".info" function. Slightly more than half of features are numerical variables. We encode the categorical variables into numerical values using sklearn.preprocessing.OneHotEncoder.
+* **Data type** - We review the data type using the ".info" function. Slightly more than half of the features are numerical variables. We encode the categorical variables into numerical values using sklearn.preprocessing.OneHotEncoder.
 
 ### Exploring the data
-We study the vaccination pattern by plotting every single feature against the target variable. If a feature is correlated with the target, we expect to see different vaccination pattern as the values of the feature vary. 
+We study the vaccination pattern by plotting each single feature against the target variable. If a feature is correlated with the target, we expect to see different vaccination pattern as the values of the feature vary. 
 
 Below are samples of the plot used to study the vaccination pattern. Opinion questions seem to have high correlation with the target, but not sex.
 
@@ -49,7 +49,7 @@ Random forest machine learning model has been chosen as the baseline model. The 
 * Random forest model is robust to overfitting. This means it is less likely to produce poor generalisation performance when applied to new data. This is an important consideration in this exercise as we would like a model that is able to generalise well to new examples and not just perform well on training data.
 * Random forest model is relatively simple to implement and does not necessarily require much fine-tuning.
 
-We fit the baseline model to the full set of features available in the cleaned NFHS data. 
+We fit the baseline model to the full set of features available in the cleaned NFHS data. <br>
 <img src="./Diagram/class_rpt_baseline.jpg" alt="drawing" width="300" height = "130"/> <br>
 The baseline model has an accuracy score of 76.13%.
 
@@ -103,7 +103,14 @@ The GridSearchCV best model achieved 77.19% accuracy. The required hyperparamete
 This is an improvement on the baseline model.
 
 ### An alternate: Deep Learning Model
-A second machine learning model involving binary classification using a neural network is considered.
+A second machine learning model involving binary classification using a neural network is considered. The neural network is two-layer deep that uses the relu activation function both layers. This neural network model is compiled using the binary_crossentropy loss function, the adam optimiser, and the accuracy evaluation metrics and fitted using 50 epochs and 1000 batch size.
+
+<img src="./Diagram/class_rpt_nn.jpg" alt="drawing" width="300" height = "130"/> <br>
+
+The neural network model has an accuracy of 76.01%.
+
+**To do - discuss valuation, loss function**
+
 
 ### Comparing the performance of each model
 
@@ -132,7 +139,9 @@ Future work could include:
 * evaluate the models using additional performance metrics such as precision, recall and F1 score to get a more complete understanding of the model's performance
 
 ## Conclusion
-The baseline model has a reasonably high accuracy score of 76.13%. Both attempts on hyperparameters tuning improve the accuracy marginally. This could be due to the baseline model was already well-tuned and did not have much room to improve. It could also be that the specified hyperparameters ranges or values did not capture the optimal set.
+The baseline model has a reasonably high accuracy score of 76.13%. Both attempts on hyperparameters tuning only improve the accuracy marginally. This could be due to the baseline model was already well-tuned and did not have much room to improve. It could also be that the specified hyperparameters ranges or values did not capture the optimal set.
+
+**To do - add points on neural network model**
 
 
 
