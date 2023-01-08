@@ -34,22 +34,21 @@ The following summarises the data checking and cleaning performed:
 
 
 ### Exploring the data
-
+We study the vaccination pattern by plotting every single feature against the target variable. If a feature is correlated with the target, we expect to see different vaccination pattern as the values of the feature vary. Below are samples of the plot used to study the vaccination pattern.
 
 <img src="./Diagram/vacc_pattern.jpg" alt="drawing" width="750" height = "380"/>
+From the sample plots above, opinion questions seem to have high correlation with the target, but not sex.
 
 
 ## Build and Train Machine Learning Model
 ### Establish the baseline model
-The baseline model is a random forest learning model. The reasons for random forest model are as follows:
-* Random forest model is relatively simple to implement and does not necessarily require much fine-tuning.
-* Random forest model is known for its high accuracy and ability to handle large and complex datasets. This is important as the NFHS has a high number of features.
+Random forest machine learning model has been chosen as the baseline model. The key considerations are:
+* Random forest model is known for its high accuracy and ability to handle large and complex datasets. This is important as the NFHS has a high number of features. 
 * Random forest model is robust to overfitting. This means it is less likely to produce poor generalisation performance when applied to new data. This is an important consideration in this exercise as we would like a model that is able to generalise well to new examples and not just perform well on training data.
+* Random forest model is relatively simple to implement and does not necessarily require much fine-tuning.
 
-We fit the baseline model to the full set of features in the cleaned NFHS data. The baseline performance is summarised below. <br>
+We fit the baseline model to the full set of features in the cleaned NFHS data. The baseline model has an accuracy score of 76.13%. <br>
 <img src="./Diagram/class_rpt_baseline.jpg" alt="drawing" width="300" height = "130"/>
-
-The baseline model has an accuracy score of 76.13%
 
 
 ### Tune the baseline
@@ -99,13 +98,19 @@ The GridSearchCV best model achieves 77.19% accuracy. The required hyperparamete
 
 This is also an improvement on the baseline model.
 
-### Evaluate the performance of each model
-
-
-
 ### An alternate: Deep Learning Model
 
 
+### Comparing the performance of each model
+
+
+| Model | Accuracy |
+|-------|----------|
+|**Baseline** : Random forest learning model; full set of features used | 76.13% |
+|**Tune i** : Reduced number of input features | 75.15%|
+|**Tune ii** : Hyperparameters tuning with RandomizedSearchCV | 77.18% |
+|**Tune iii** : Hyperparameters tuning with GridSearchCV | 77.19% |
+|**2nd ML** : Deep learning model | 76.01% |
 
 *future development needed?*
 
