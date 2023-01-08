@@ -12,7 +12,7 @@ Once the baseline is established, we explore various tuning techniques includes:
 
 A second machine learning model involving deep learning is considered. 
 
-We then compare the performance of each model to determine which has sufficient predictive power. *To add - discuss performance metric and what will indicate stronger performance*
+We then compare the performance of each model. The focused performance metric is accuracy score. This metric measures the number of correct predictions made by a model in relation to the total number of predictions made. This metric can be calculated using sklearn.metrics.accuracy_score.
 
 [^1]: The NFHS was one-time survey designed to monitor vaccination during 2009-2010 flu season in response to the 2009 H1N1 pandemic. For further information, refer to [U.S. National 2009 H1N1 Flu Survey (NFHS)](https://webarchive.loc.gov/all/20140511031000/http://www.cdc.gov/nchs/nis/about_nis.htm#h1n1)
 
