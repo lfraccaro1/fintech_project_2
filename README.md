@@ -18,7 +18,7 @@ We then compare the performance of each model to determine which has sufficient 
 
 
 ## The Dataset
- The NFHS data contains 26,707 survey respondents collected between late 2009 amd early 2010. Each survey respondents were asked whether they had received H1N1 and seasonal flu vaccines and additional questions about themselves such as social, economic and demographic background, opinions on risks of illness and vaccine effectiveness, and behaviours towards mitigating tranmission. 
+ The NFHS data contains 26,707 survey respondents collected between late 2009 and early 2010. Each survey respondents were asked whether they had received H1N1 and seasonal flu vaccines and additional questions about themselves such as social, economic and demographic background, opinions on risks of illness and vaccine effectiveness, and behaviours towards mitigating tranmission. 
 
  This dataset is a copy shared by the United States National Center for Health Statistics for a data science practice competition hosted by [DrivenData](https://www.drivendata.org/competitions/66/flu-shot-learning/).
 
@@ -38,18 +38,35 @@ The following summarises the data checking and cleaning performed:
 
 ## Build and Train Machine Learning Model
 ### Establish the baseline model
+The baseline model is a random forest learning model. The reasons for random forest model are as follows:
+* Random forest model is relatively simple to implement and does not necessarily require much fine-tuning.
+* Random forest model is known for its high accuracy and ability to handle large and complex datasets. This is important as the NFHS has a high number of features.
+* Random forest model is robust to overfitting. This means it is less likely to produce poor generalisation performance when applied to new data. This is an important consideration in this exercise as we would like a model that is able to generalise well to new examples and not just perform well on training data.
+
+We fit the baseline model to the full set of features in the cleaned NFHS data. The baseline performance is summarised below. <br>
+<img src="./Diagram/class_rpt_baseline.jpg" alt="drawing" width="300" height = "130"/>
+* The baseline model has an accuracy score of 0.7613.
+
 
 ### Tune the baseline
+In this section, ...
+
 #### i. Features Selection
+Features selection involes reducing the number of input features used to train the model. To select which features to include, a correlation matrix is computed to identify the features that are most correlated to the target variable. Four features with the highest absolute correlation value are used to define a new set of features, reducing the number of input features from 54 to 4. <br>
+<img src="./Diagram/corr_matrix.jpg" alt="drawing" width="800" height = "600"/>
+
+The performance of the model using the reduced number of features is:
 
 
 
 #### ii. Hyperparameters tuning with RandomizedSearchCV
+RandomizedSearchCV is a library from SKLearn that allows a user to perform hyperparameter tuning on a given model by specifying a list of hyperparameter to tune and a list of possible values for each. It randomly selects a combination of hyperparameters from these lists and fits the model using them. The fitted model is then scored using cross-validation, and the process is repeated a number of times as defined by the user. The model that results in the highest mean score across the cross-validation folds is selected as the best model, and the best combination of hyperparameters is retained. 
+
 
 
 
 #### iii. Hyperparameters tuning with GridSearchCV
-
+GridSearchCV is another library from SKLearn that allows a user to perform hyperparameter tuning. It differs from RandomizedSearchCV in that it comprehensively searches over a specified hyperparameter grid, rather than randomly selecting a number from the specified ranges of hyperparamters given. 
 
 
 ### Evaluate the performance of each model
