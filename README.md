@@ -36,6 +36,9 @@ The following summarises the data checking and cleaning performed:
 ### Exploring the data
 
 
+<img src="./Diagram/vacc_pattern.jpg" alt="drawing" width="750" height = "380"/>
+
+
 ## Build and Train Machine Learning Model
 ### Establish the baseline model
 The baseline model is a random forest learning model. The reasons for random forest model are as follows:
@@ -45,18 +48,19 @@ The baseline model is a random forest learning model. The reasons for random for
 
 We fit the baseline model to the full set of features in the cleaned NFHS data. The baseline performance is summarised below. <br>
 <img src="./Diagram/class_rpt_baseline.jpg" alt="drawing" width="300" height = "130"/>
-* The baseline model has an accuracy score of 76.13%
+
+The baseline model has an accuracy score of 76.13%
 
 
 ### Tune the baseline
-In this section, ...
+In this section, we explore both tuning parameters and tuning hyperparameters.
 
 #### i. Features Selection
-Features selection involes reducing the number of input features used to train the model. To select which features to include, a correlation matrix is computed to identify the features that are most correlated to the target variable. Four features with the highest absolute correlation value are used to define a new set of features, reducing the number of input features from 54 to 4. <br>
-<img src="./Diagram/corr_matrix.jpg" alt="drawing" width="800" height = "600"/>
+Features selection involes reducing the number of input features used to train the model. To select which features to include, a correlation matrix is computed to identify the features that are most correlated to the target variable. Four features with the highest absolute correlation value are used to define a new set of features, reducing the number of input features from 54 to 4. The new set of features are ["age_group_65+ years","doctor_recc_seasonal", "opinion_seas_risk", "opinion_seas_vacc_effective"]. 
 
+<img src="./Diagram/class_rpt_lessfeat.jpg" alt="drawing" width="300" height = "130"/> <br>
 
-Model using the new set of features has an accuracy score of 74.5%, slightly lower than baseline. This suggests the selected four features covered most of the explanatory percentage. Additional features may be correlated with the selected four features, or irrelevant to the target variable and hence only add marginally to the explanatory power. One advantage of using smaller set of features is that the model is simpler and faster to train and implement.
+The accuracy score of the model with new set of features is 75.15%, slightly lower than the baseline. This suggests the selected four features covered most of the explanatory percentage. Additional features may be correlated with the selected four features, or irrelevant to the target variable and hence only add marginally to the explanatory power. One advantage of using smaller set of features is that the model is simpler and faster to train and implement.
 
 
 #### ii. Hyperparameters tuning with RandomizedSearchCV
@@ -65,21 +69,35 @@ RandomizedSearchCV is a library from SKLearn that allows a user to perform hyper
 * max_features (refers to the maximum number of features the model considers when looking for the best split at each tree node);
 * min_samples_split (refers to the minimum number of samples required at a node in order for the node to be split)
 
-We set up the search to train 20 models over 2 folds of cross-validation (resulting in fitting 40 models in total), scoring the best fit based on accuracy. The best fit model results in 76.15% accuracy score and the required hyperparameters are:
-* n_estimators = 441,
-* max_features = 14;
-* min_samples_split = 19.
+We set up the search to train 20 models over 2 folds of cross-validation (resulting in fitting 40 models in total), scoring the best fit based on accuracy. 
 
+<img src="./Diagram/class_rpt_rscv.jpg" alt="drawing" width="300" height = "130"/> <br>
+
+The best fit model results in 77.18% accuracy score and the required hyperparameters are:
+* n_estimators = 207,
+* max_features = 10;
+* min_samples_split = 23. <br>
+
+This is an improvement on the baseline model.
 
 #### iii. Hyperparameters tuning with GridSearchCV
-GridSearchCV is another library from SKLearn that allows a user to perform hyperparameter tuning. It differs from RandomizedSearchCV in that it comprehensively searches over a specified hyperparameter grid, rather than randomly selecting a number from the specified ranges of hyperparamters given. 
+GridSearchCV is another library from SKLearn that allows a user to perform hyperparameter tuning. It differs from RandomizedSearchCV in that it comprehensively searches over a specified hyperparameter grid, rather than randomly selecting a number from the specified ranges of hyperparamters given. One advantage of GridSearchCV is that it is guaranteed to find an optimal combination of hyperparameters, since it examines all possible combinations. However, it can be resource intensive since it examines every combination of hyperparameters.
 
 To use GridSearchCV, we use the following hyperparameters:
-* n_estimators = [200,500];
-* max_features = [10,15,20];
-* min_sample_split = [20,25,30].
+* n_estimators = 200,500;
+* max_features = 10,15,20;
+* min_sample_split = 20,25,30.
 
-The algorithm looks at the model with highest mean score across the cross-validation folds and selects it as the best model, and the combination of hyperparameters is retained.
+The algorithm looks at the model with highest mean score across the cross-validation folds and selects it as the best model, and the combination of hyperparameters is retained. 
+
+<img src="./Diagram/class_rpt_gscv.jpg" alt="drawing" width="300" height = "130"/> <br>
+
+The GridSearchCV best model achieves 77.19% accuracy. The required hyperparameters are:
+* n_estimators = 500,
+* max_features = 15,
+* min_samples_split = 30. <br>
+
+This is also an improvement on the baseline model.
 
 ### Evaluate the performance of each model
 
