@@ -103,11 +103,13 @@ The GridSearchCV best model achieved 77.28% accuracy. The required hyperparamete
 This is an improvement on the baseline model.
 
 ### An alternate: Deep Learning Model
-A second machine learning model involving binary classification using a neural network is considered. The neural network is two-layer deep that uses the relu activation function on both layers. This neural network model is compiled and fitted using the binary_crossentropy loss function, the adam optimiser, the accuracy evaluation metrics, 50 epochs and 1000 batch size.
+A second machine learning model involving binary classification using a neural network is considered. The neural network is two-layer deep that uses the relu activation function on both layers. This neural network model is compiled and fitted using the binary_crossentropy loss function, the adam optimiser, the accuracy evaluation metrics, 50 epochs and 1000 batch size. The neural network model summary is provided in the table below. <br>
+<img src="./Diagram/nn_model_summary.jpg" alt="drawing" width="350" height = "200"/> <br>
+
 
 **Neural network model performance**
 <img src="./Diagram/nn_performance.jpg" alt="drawing" width="600" height = "230"/> <br>
-As the epoch increases, loss decreases from 0.68 down to c.0.45 and accuracy increases from 0.58 up to c.0.75. The difference between train_loss and validation_loss is widening as epoch increases (similar observation made in metric accuracy). This could be a sign of model overfitting. 
+As the epoch increases, loss decreases from 0.68 down to c.0.45 and accuracy increases from 0.58 up to c.0.75. The difference between train_loss and validation_loss is widening as epoch increases (similar observation made in metric accuracy). This could be a sign of overfitting. 
 
 
 <img src="./Diagram/class_rpt_nn.jpg" alt="drawing" width="300" height = "130"/> <br>
@@ -126,12 +128,11 @@ The neural network model has an accuracy of 76.35%.
 
 * **Reduced number of input features** - Limiting the number of features resulted in a slight decrease in accuracy but it resulted in a simpler and faster model. This method will be useful in cases where computational resources are limited or when interpretability of the model is as priority.
 
-* **Hyperparameters tuning with RandomizedSearchCV** - 
+* **Hyperparameters tuning with RandomizedSearchCV** - It improves the accuracy and less resource intensive compared to GridSearchCV. RandomizedSearchCV is recommended when there is a large parameter space tuning required.
 
 * **Hyperparameters tuning with GridSearchCV** - While GridSearchCV resulted in the highest accuracy score, it is the most resource effective approach due to its comprehensive search of all possible hyperparameter combinations. 
 
-* **Deep learning model** - 
-
+* **Deep learning model** - The simple neural network model has similar accuracy as the baseline and is a good alternative. 
 
 
 ## Future Work
@@ -144,7 +145,7 @@ Future work could include:
 ## Conclusion
 The baseline model has a reasonably high accuracy score of 76.13%. Both attempts on hyperparameters tuning only improve the accuracy marginally. This could be due to the baseline model was already well-tuned and did not have much room to improve. It could also be that the specified hyperparameters ranges or values did not capture the optimal set.
 
-**To do - add points on neural network model**
+The chosen simple neural network has similar predictive power as the baseline model. Further tuning may increase the accuracy and outperform the baseline model.
 
 
 
