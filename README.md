@@ -57,11 +57,11 @@ The baseline model has an accuracy score of 76.13%.
 In this section, we explore both tuning parameters and tuning hyperparameters of the model.
 
 #### i. Features Selection
-Features selection involes reducing the number of input features used to train the model. To select which features to include, a correlation matrix is computed to identify the features that are most correlated to the target variable. Four features with the highest absolute correlation value are used to define a new set of features, reducing the number of input features from 54 to 4. The new set of features are ["age_group_65+ years","doctor_recc_seasonal", "opinion_seas_risk", "opinion_seas_vacc_effective"]. 
+Features selection involves reducing the number of input features used to train the model. To select which features to include, a correlation matrix is computed to identify the features that are most correlated to the target variable. Four features with the highest absolute correlation value are used to define a new set of features, reducing the number of encoded input features from 54 to 4. The new set of features are ["age_group_65+ years","doctor_recc_seasonal", "opinion_seas_risk", "opinion_seas_vacc_effective"]. 
 
 <img src="./Diagram/class_rpt_lessfeat.jpg" alt="drawing" width="300" height = "130"/> <br>
 
-The accuracy score of the model with new set of features was 75.15%, slightly lower than the baseline. This suggests the selected four features are strongest signals for the target variable. Additional features may be correlated with these four features, or irrelevant to the target variable.
+The accuracy score of the model with new set of features was 75.15%, slightly lower than the baseline. This suggests the selected four features are relative strong signals for the target variable. Additional features may be correlated with these four features, or irrelevant to the target variable.
 
 
 #### ii. Hyperparameters tuning with RandomizedSearchCV
@@ -137,7 +137,7 @@ The neural network model has an accuracy of 76.35%.
 Future work could include:
 * explore different model configurations and/or algorithms;
 * explore different features sets using feature engineering technique to train the model;
-* evaluate the models using additional performance metrics such as precision, recall and F1 score to get a more complete understanding of the model's performance
+* evaluate the models using additional performance metrics such as precision, recall and F1 score to get a more comprehensive understanding of the model's performance
 
 ## Conclusion
 The baseline model has a reasonably high accuracy score of 76.13%. Both attempts on hyperparameters tuning only improve the accuracy marginally. This could be due to the baseline model was already well-tuned and did not have much room to improve. It could also be that the specified hyperparameters ranges or values did not capture the optimal set.
