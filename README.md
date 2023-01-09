@@ -128,7 +128,7 @@ The neural network model has an accuracy of 76.35%.
 
 * **Reduced number of input features** - Limiting the number of features resulted in a slight decrease in accuracy but it resulted in a simpler and faster model. This method will be useful in cases where computational resources are limited or when interpretability of the model is as priority.
 
-* **Hyperparameters tuning with RandomizedSearchCV** - It improves the accuracy and less resource intensive compared to GridSearchCV. RandomizedSearchCV is recommended when there is a large parameter space tuning required.
+* **Hyperparameters tuning with RandomizedSearchCV** - It improves the accuracy and is less resource intensive compared to GridSearchCV. RandomizedSearchCV is recommended when there is a large parameter space tuning required.
 
 * **Hyperparameters tuning with GridSearchCV** - While GridSearchCV resulted in the highest accuracy score, it is the most resource effective approach due to its comprehensive search of all possible hyperparameter combinations. 
 
