@@ -57,7 +57,7 @@ The baseline model has an accuracy score of 76.13%.
 In this section, we explore both tuning parameters and tuning hyperparameters of the model.
 
 #### i. Features Selection
-Features selection involves reducing the number of input features used to train the model. To select which features to include, a correlation matrix is computed to identify the features that are most correlated to the target variable. Four features with the highest absolute correlation value are used to define a new set of features, reducing the number of encoded input features from 54 to 4. The new set of features are ["age_group_65+ years","doctor_recc_seasonal", "opinion_seas_risk", "opinion_seas_vacc_effective"]. 
+Features selection involves reducing the number of input features used to train the model. To select which features to include, a [correlation matrix](./Diagram/corr.jpg) is computed to identify the features that are most correlated to the target variable. Four features with the highest absolute correlation value are used to define a new set of features, reducing the number of encoded input features from 54 to 4. The new set of features are ["age_group_65+ years","doctor_recc_seasonal", "opinion_seas_risk", "opinion_seas_vacc_effective"]. 
 
 <img src="./Diagram/class_rpt_lessfeat.jpg" alt="drawing" width="300" height = "130"/> <br>
 
@@ -107,6 +107,7 @@ A second machine learning model involving binary classification using a neural n
 
 **Neural network model performance**
 <img src="./Diagram/nn_performance.jpg" alt="drawing" width="600" height = "230"/> <br>
+As the epoch increases, loss decreases from 0.68 down to c.0.45 and accuracy increases from 0.58 up to c.0.75. The difference between train_loss and validation_loss is widening as epoch increases (similar observation made in metric accuracy). This could be a sign of model overfitting. 
 
 
 <img src="./Diagram/class_rpt_nn.jpg" alt="drawing" width="300" height = "130"/> <br>
@@ -137,7 +138,8 @@ The neural network model has an accuracy of 76.35%.
 Future work could include:
 * explore different model configurations and/or algorithms;
 * explore different features sets using feature engineering technique to train the model;
-* evaluate the models using additional performance metrics such as precision, recall and F1 score to get a more comprehensive understanding of the model's performance
+* evaluate the models using additional performance metrics such as precision, recall and F1 score to get a more comprehensive understanding of the model's performance.
+* further tuning the neural network model such as introducing more layers, dropout regularisation and tuning learning rate.
 
 ## Conclusion
 The baseline model has a reasonably high accuracy score of 76.13%. Both attempts on hyperparameters tuning only improve the accuracy marginally. This could be due to the baseline model was already well-tuned and did not have much room to improve. It could also be that the specified hyperparameters ranges or values did not capture the optimal set.
@@ -179,6 +181,10 @@ The table below describes the features included in the dataset.
  |household_children            | Number of children in household, top-coded to 3.                             |
  |employment_industry           | Type of industry respondent is employed in. Values are represented as short random character strings.|
  |employment_occupation         | Type of occupation of respondent. Values are represented as short random character strings.|
+
+## Appendix 2 - Correlation Heatmap
+
+<img src="./Diagram/corr.jpg" alt="drawing" width="850" height = "650"/> 
 
 ## References
 * https://www.drivendata.org/competitions/66/flu-shot-learning/
