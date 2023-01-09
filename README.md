@@ -30,7 +30,7 @@ The following summarises the data checking and cleaning performed:
 <img src="./Diagram/chk_balance_class.jpg" alt="drawing" width="280" height = "100"/> <br>
 "seasonal_vaccine" target variable has balanced class.
 
-* **Data quality** - We check if there is any missing or null value, using the ".isnull.sum() syntax. Out of the 30 columns: <br> - 6 columns (including the target variable column) has no missing value; <br> - 3 feature columns have more than 40% missing values; and <br> - the remaining feature columns have low volume of missing values where the missing value percentages range between 0.1% and  17.0%. <br> <br> **Strategy for handling missing values** <br> - 3 features columns with more than 40% missing values are excluded from the modelling. These features are "health_insurance", "employment_industry" and "employment_occupation". <br> - For the remaining feature columns, missing values are replaced with the "most_frequent" value observed using sklearn.impute.SimpleImputer module. The most_frequent values are selected as it works well for both numerical and categorical variables.
+* **Data quality** - We check if there is any missing or null value, using the ".isnull.sum() syntax. Out of the 30 columns: <br> - 6 columns (including the target variable column) has no missing value; <br> - 3 feature columns have more than 40% missing values; and <br> - the remaining feature columns have low volume of missing values where the missing value percentage ranges from 0.1% up to 17.0%. <br> <br> **Strategy for handling missing values** <br> - 3 features columns with more than 40% missing values are excluded from the modelling. These features are "health_insurance", "employment_industry" and "employment_occupation". <br> - For the remaining feature columns, missing values are replaced with the "most_frequent" value observed using sklearn.impute.SimpleImputer module. The most_frequent values are selected as it works well for both numerical and categorical variables.
 
 * **Data type** - We review the data type using the ".info" function. Slightly more than half of the features are numerical variables. We encode the categorical variables into numerical values using sklearn.preprocessing.OneHotEncoder.
 
@@ -95,7 +95,7 @@ The algorithm looks at the model with highest mean score across the cross-valida
 
 <img src="./Diagram/class_rpt_gscv.jpg" alt="drawing" width="300" height = "130"/> <br>
 
-The GridSearchCV best model achieved 77.19% accuracy. The required hyperparameters are:
+The GridSearchCV best model achieved 77.28% accuracy. The required hyperparameters are:
 * n_estimators = 500,
 * max_features = 15,
 * min_samples_split = 30. <br>
@@ -103,13 +103,14 @@ The GridSearchCV best model achieved 77.19% accuracy. The required hyperparamete
 This is an improvement on the baseline model.
 
 ### An alternate: Deep Learning Model
-A second machine learning model involving binary classification using a neural network is considered. The neural network is two-layer deep that uses the relu activation function both layers. This neural network model is compiled using the binary_crossentropy loss function, the adam optimiser, and the accuracy evaluation metrics and fitted using 50 epochs and 1000 batch size.
+A second machine learning model involving binary classification using a neural network is considered. The neural network is two-layer deep that uses the relu activation function on both layers. This neural network model is compiled and fitted using the binary_crossentropy loss function, the adam optimiser, the accuracy evaluation metrics, 50 epochs and 1000 batch size.
+
+**Neural network model performance**
+<img src="./Diagram/nn_performance.jpg" alt="drawing" width="600" height = "230"/> <br>
+
 
 <img src="./Diagram/class_rpt_nn.jpg" alt="drawing" width="300" height = "130"/> <br>
-
-The neural network model has an accuracy of 76.01%.
-
-**To do - discuss valuation, loss function**
+The neural network model has an accuracy of 76.35%.
 
 
 ### Comparing the performance of each model
@@ -119,8 +120,8 @@ The neural network model has an accuracy of 76.01%.
 |**Baseline** : Random forest learning model uisng the full set of features | 76.13% |
 |**Tune i** : Reduced number of input features | 75.15%|
 |**Tune ii** : Hyperparameters tuning with RandomizedSearchCV | 77.18% |
-|**Tune iii** : Hyperparameters tuning with GridSearchCV | 77.19% |
-|**2nd ML** : Deep learning model | 76.01% |
+|**Tune iii** : Hyperparameters tuning with GridSearchCV | 77.28% |
+|**2nd ML** : Deep learning model | 76.35% |
 
 * **Reduced number of input features** - Limiting the number of features resulted in a slight decrease in accuracy but it resulted in a simpler and faster model. This method will be useful in cases where computational resources are limited or when interpretability of the model is as priority.
 
