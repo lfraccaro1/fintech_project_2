@@ -137,7 +137,7 @@ The neural network model has an accuracy of 76.35%.
 Future work could include:
 * explore different model configurations and/or algorithms;
 * explore different features sets using feature engineering technique to train the model;
-* evaluate the models using additional performance metrics such as precision, recall and F1 score to get a more complete understanding of the model's performance
+* evaluate the models using additional performance metrics such as precision, recall and F1 score to get a more comprehensive understanding of the model's performance
 
 ## Conclusion
 The baseline model has a reasonably high accuracy score of 76.13%. Both attempts on hyperparameters tuning only improve the accuracy marginally. This could be due to the baseline model was already well-tuned and did not have much room to improve. It could also be that the specified hyperparameters ranges or values did not capture the optimal set.
