@@ -150,9 +150,8 @@ The following hyperparameters were manipulated:<br>
 * Activation Function: Sigmoid
 
 The tuned neural network model summary is provided in the table below. <br>
-<img src="./Diagram/tuned_nn_model_summary.PNG" alt="drawing" width="350" height = "200"/> <br>
+<img src="./Diagram/tuned_nn_model_summary.PNG" alt="drawing" width="350" height = "400"/> <br>
 
-**AUC SCORE:** 0.7628<br>
 **Changes from Baseline:**<br>
 Optimizer, Adam --> SGD;<br>
 Activation functions in layers 1 and 2, ReLu --> Sigmoid;<br>
@@ -165,7 +164,7 @@ Marginally higher AUC score than the baseline. Epochs were increased from 50 to 
 
 **Tuned neural network model performance**
 The tuned model resulted in a marginally improved accuracy score of 76.28% as shown below:
-<img src="./Diagram/tuned_nn_model_performance.PNG" alt="drawing" width="350" height = "200"/> <br>
+<img src="./Diagram/tuned_nn_model_performance.PNG" alt="drawing" width="300" height = "150"/> <br>
 
 
 ### Comparing the performance of each model
