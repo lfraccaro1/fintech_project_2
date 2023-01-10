@@ -54,10 +54,12 @@ Last, random forest models are relatively simple to implement and do not require
 <img src="./Diagram/class_rpt_baseline.jpg" alt="drawing" width="300" height = "130"/> <br>
 The baseline model has an accuracy score of 76.13%.
 
+
 ### Tune the baseline
 In this section, we explore both tuning parameters and tuning hyperparameters of the model.
 
 #### i. Features Selection
+
 Features selection involves reducing the number of input features used to train the model. To select which features to include, a [correlation matrix](./Diagram/corr.jpg) is computed to identify the features that are most correlated to the target variable. Four features with the highest absolute correlation value are used to define a new set of features, reducing the number of input features from 31 to 4. The new set of features are ["age_group_65+ years","doctor_recc_seasonal", "opinion_seas_risk", "opinion_seas_vacc_effective"]. 
 
 <img src="./Diagram/class_rpt_lessfeat.jpg" alt="drawing" width="300" height = "130"/> <br>
