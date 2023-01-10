@@ -118,7 +118,7 @@ As the epoch increases, loss decreases from 0.68 down to c.0.45 and accuracy inc
 <img src="./Diagram/class_rpt_nn.jpg" alt="drawing" width="300" height = "130"/> <br>
 The neural network model has an accuracy of 76.35%.
 
-#### Tuning the Parameters to Find the Ideal Neural Network
+### Tuning the Parameters to Find the Ideal Neural Network
 
 The following hyperparameters were manipulated:<br>
 * Input Features: 54<br>
@@ -163,7 +163,7 @@ Addition of dropout technique to prevent overfitting, with rate of 0.5 for input
 Marginally higher AUC score than the baseline. Epochs were increased from 50 to 150 as it was found that while using the 'Dropout'regularization technique, the accuracy score following each epoch was increasing at a more reduced rate than before and thus a greater number of epochs is required to reach a sufficiently high score.
 
 **Tuned neural network model performance**
-The tuned model resulted in a marginally improved accuracy score of 76.28% as shown below:
+The tuned model resulted in a marginally improved accuracy score of 76.28% as shown below:<br>
 <img src="./Diagram/tuned_nn_model_performance.PNG" alt="drawing" width="300" height = "150"/> <br>
 
 
