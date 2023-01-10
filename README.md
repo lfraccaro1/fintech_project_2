@@ -190,6 +190,7 @@ The table below describes the features included in the dataset.
 
 ## References
 * Data source: https://www.drivendata.org/competitions/66/flu-shot-learning/
+* SimpleImputer: https://scikit-learn.org/stable/modules/generated/sklearn.impute.SimpleImputer.html
 * RandomizedSearchCV: https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.RandomizedSearchCV.html
 * GridSearchCV : https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html
 * Statistical Function (scipy.stats): https://docs.scipy.org/doc/scipy/reference/stats.html
