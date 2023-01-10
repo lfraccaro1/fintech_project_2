@@ -5,14 +5,14 @@
 
 This exercise aims to predict whether individuals will receive their seasonal flu vaccine. To create the predictive model, we fit a machine learning model with random forest classifier (the baseline) to the vaccination data collected in the United States National 2009 H1N1 Flu Survey (NFHS)[^1]. 
 
-Once the baseline is established, we explore various tuning techniques includes:
+Once the baseline is established, we explore various tuning techniques including:
 * feature selection to reduce the number of input features,
 * hyperparameters tuning with RandomisedSearchCV, and
 * hyperparametrs tuning with GridSearchCV.
 
-A second machine learning model involving deep learning is considered. 
+A second machine learning model involving deep learning is also considered. 
 
-We then compare the performance of each model. The focused performance metric is accuracy score. This metric measures the number of correct predictions made by a model in relation to the total number of predictions made. This metric can be calculated using sklearn.metrics.accuracy_score.
+We then compare the performance of each model. The focused performance metric is accuracy score. This metric measures the number of correct predictions made by a model in relation to the total number of predictions made. This metric is calculated using sklearn.metrics.accuracy_score.
 
 [^1]: The NFHS was one-time survey designed to monitor vaccination during 2009-2010 flu season in response to the 2009 H1N1 pandemic. For further information, refer to [U.S. National 2009 H1N1 Flu Survey (NFHS)](https://webarchive.loc.gov/all/20140511031000/http://www.cdc.gov/nchs/nis/about_nis.htm#h1n1)
 
@@ -30,7 +30,7 @@ The following summarises the data checking and cleaning performed:
 <img src="./Diagram/chk_balance_class.jpg" alt="drawing" width="280" height = "100"/> <br>
 "seasonal_vaccine" target variable has balanced class.
 
-* **Data quality** - We check if there is any missing or null value, using the ".isnull.sum() syntax. Out of the 30 columns: <br> - 6 columns (including the target variable column) has no missing value; <br> - 3 feature columns have more than 40% missing values; and <br> - the remaining feature columns have low volume of missing values where the missing value percentage ranges from 0.1% up to 17.0%. <br> <br> **Strategy for handling missing values** <br> - 3 features columns with more than 40% missing values are excluded from the modelling. These features are "health_insurance", "employment_industry" and "employment_occupation". <br> - For the remaining feature columns, missing values are replaced with the "most_frequent" value observed using sklearn.impute.SimpleImputer module. The most_frequent values are selected as it works well for both numerical and categorical variables.
+* **Data quality** - We check if there is any missing or null value, using the ".isnull.sum() syntax. Out of the 31 columns: <br> - 6 columns (including the target variable column) has no missing value; <br> - 3 feature columns have more than 40% missing values; and <br> - the remaining feature columns have low volume of missing values where the missing value percentage ranges from 0.1% up to 17.0%. <br> <br> **Strategy for handling missing values** <br> - 3 features columns with more than 40% missing values are excluded from the modelling. These features are "health_insurance", "employment_industry" and "employment_occupation". <br> - For the remaining feature columns, missing values are replaced with the "most_frequent" value observed using sklearn.impute.SimpleImputer module. The most_frequent values are selected as it works well for both numerical and categorical variables.
 
 * **Data type** - We review the data type using the ".info" function. Slightly more than half of the features are numerical variables. We encode the categorical variables into numerical values using sklearn.preprocessing.OneHotEncoder.
 
@@ -44,12 +44,13 @@ Below are samples of the plot used to study the vaccination pattern. Opinion que
 
 ## Build and Train Machine Learning Model
 ### Establish the baseline model
-Random forest machine learning model has been chosen as the baseline model. The key considerations are:
-* Random forest model is known for its high accuracy and ability to handle large and complex datasets. This is important as the NFHS data has a high number of features. 
-* Random forest model is robust to overfitting. This means it is less likely to produce poor generalisation performance when applied to new data. This is an important consideration in this exercise as we would like a model that is able to generalise well to new examples and not just perform well on training data.
-* Random forest model is relatively simple to implement and does not necessarily require much fine-tuning.
+We decided to use the random forest machine learning model as our baseline for several reasons. First, random forests are known for their high accuracy and ability to handle large and complex datasets. This was important for us as we were working with a dataset that has a high number of features.
 
-We fit the baseline model to the full set of features available in the cleaned NFHS data. <br>
+Second, random forests are robust to overfitting. This means the models are less likely to produce poor generalisation performance when applied to new data. This was an important consideration for our project as we wanted to ensure the model would be able to generalise well to new examples and not just perform well on the training data.
+
+Last, random forest models are relatively simple to implement and do not require much fine-tuning, which we decided made it a good choice for a baseline model.
+
+**Performance of the baseline model** <br>
 <img src="./Diagram/class_rpt_baseline.jpg" alt="drawing" width="300" height = "130"/> <br>
 The baseline model has an accuracy score of 76.13%.
 
@@ -57,7 +58,7 @@ The baseline model has an accuracy score of 76.13%.
 In this section, we explore both tuning parameters and tuning hyperparameters of the model.
 
 #### i. Features Selection
-Features selection involves reducing the number of input features used to train the model. To select which features to include, a [correlation matrix](./Diagram/corr.jpg) is computed to identify the features that are most correlated to the target variable. Four features with the highest absolute correlation value are used to define a new set of features, reducing the number of encoded input features from 54 to 4. The new set of features are ["age_group_65+ years","doctor_recc_seasonal", "opinion_seas_risk", "opinion_seas_vacc_effective"]. 
+Features selection involves reducing the number of input features used to train the model. To select which features to include, a [correlation matrix](./Diagram/corr.jpg) is computed to identify the features that are most correlated to the target variable. Four features with the highest absolute correlation value are used to define a new set of features, reducing the number of input features from 31 to 4. The new set of features are ["age_group_65+ years","doctor_recc_seasonal", "opinion_seas_risk", "opinion_seas_vacc_effective"]. 
 
 <img src="./Diagram/class_rpt_lessfeat.jpg" alt="drawing" width="300" height = "130"/> <br>
 
@@ -103,7 +104,7 @@ The GridSearchCV best model achieved 77.28% accuracy. The required hyperparamete
 This is an improvement on the baseline model.
 
 ### An alternate: Deep Learning Model
-A second machine learning model involving binary classification using a neural network is considered. The neural network is two-layer deep that uses the relu activation function on both layers. This neural network model is compiled and fitted using the binary_crossentropy loss function, the adam optimiser, the accuracy evaluation metrics, 50 epochs and 1000 batch size. The neural network model summary is provided in the table below. <br>
+A second machine learning model involving binary classification using a neural network is considered. The neural network is two-layers deep and uses the relu activation function on both layers. This neural network model is compiled and fitted using the binary_crossentropy loss function, the adam optimiser, the accuracy evaluation metrics, 50 epochs and 1000 batch size. The neural network model summary is provided in the table below. <br>
 <img src="./Diagram/nn_model_summary.jpg" alt="drawing" width="350" height = "200"/> <br>
 
 
@@ -130,7 +131,7 @@ The neural network model has an accuracy of 76.35%.
 
 * **Hyperparameters tuning with RandomizedSearchCV** - It improves the accuracy and is less resource intensive compared to GridSearchCV. RandomizedSearchCV is recommended when there is a large parameter space tuning required.
 
-* **Hyperparameters tuning with GridSearchCV** - While GridSearchCV resulted in the highest accuracy score, it is the most resource effective approach due to its comprehensive search of all possible hyperparameter combinations. 
+* **Hyperparameters tuning with GridSearchCV** - While GridSearchCV resulted in the highest accuracy score, it is the most resource intensive approach due to its comprehensive search of all possible hyperparameter combinations. 
 
 * **Deep learning model** - The simple neural network model has similar accuracy as the baseline and is a good alternative. 
 
@@ -143,11 +144,9 @@ Future work could include:
 * further tuning the neural network model such as introducing more layers, dropout regularisation and tuning learning rate.
 
 ## Conclusion
-The baseline model has a reasonably high accuracy score of 76.13%. Both attempts on hyperparameters tuning only improve the accuracy marginally. This could be due to the baseline model was already well-tuned and did not have much room to improve. It could also be that the specified hyperparameters ranges or values did not capture the optimal set.
+The baseline model has a reasonably high accuracy score of 76.13%. Both attempts on hyperparameters tuning only improve the accuracy marginally. This could be due to the baseline model being already well-tuned and did not have much room to improve. It could also be that the specified hyperparameters ranges or values did not capture the optimal set.
 
 The chosen simple neural network has similar predictive power as the baseline model. Further tuning may increase the accuracy and outperform the baseline model.
-
-
 
 ## Appendix 1
 The table below describes the features included in the dataset.
@@ -188,4 +187,7 @@ The table below describes the features included in the dataset.
 <img src="./Diagram/corr.jpg" alt="drawing" width="850" height = "650"/> 
 
 ## References
-* https://www.drivendata.org/competitions/66/flu-shot-learning/
+* Data source: https://www.drivendata.org/competitions/66/flu-shot-learning/
+* RandomizedSearchCV: https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.RandomizedSearchCV.html
+* GridSearchCV : https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html
+* Statistical Function (scipy.stats): https://docs.scipy.org/doc/scipy/reference/stats.html
