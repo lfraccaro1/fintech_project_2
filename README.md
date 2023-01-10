@@ -118,6 +118,54 @@ As the epoch increases, loss decreases from 0.68 down to c.0.45 and accuracy inc
 <img src="./Diagram/class_rpt_nn.jpg" alt="drawing" width="300" height = "130"/> <br>
 The neural network model has an accuracy of 76.35%.
 
+#### Tuning the Parameters to Find the Ideal Neural Network
+
+The following hyperparameters were manipulated:<br>
+* Input Features: 54<br>
+* Output Neuron(s): 1<br>
+* Loss: Binary Crossentropy<br>
+* Optimizer: SGD<br>
+* Metrics: Accuracy<br>
+* Epochs: 150<br>
+> *Layer 1*<br>
+* Hidden Nodes: 27<br>
+* Activation Function: Sigmoid<br>
+* ropout Rate: 0.5<br>
+
+> *Layer 2*<br>
+* Hidden Nodes: 14<br>
+* Activation Function: Sigmoid<br>
+* Dropout Rate: 0.2<br>
+
+> *Layer 3*<br>
+* Hidden Nodes: 7<br>
+* Activation Function: Sigmoid<br>
+* Dropout Rate: 0.2<br>
+
+> *Layer 4*<br>
+* Hidden Nodes: 4<br>
+* Activation Function: Sigmoid<br>
+
+> *Output Layer*<br>
+* Activation Function: Sigmoid
+
+The tuned neural network model summary is provided in the table below. <br>
+<img src="./Diagram/tuned_nn_model_summary.PNG" alt="drawing" width="350" height = "400"/> <br>
+
+**Changes from Baseline:**<br>
+Optimizer, Adam --> SGD;<br>
+Activation functions in layers 1 and 2, ReLu --> Sigmoid;<br>
+Addition of hidden layer 3, containing 7 neurons & Sigmoid activation function;<br>
+Addition of hidden layer 4, containing 4 neurons & Sigmoid activation function; <br>
+Epochs, 50 --> 150<br>
+Addition of dropout technique to prevent overfitting, with rate of 0.5 for input layer and 0.2 for layers 2 and 3 (no dropout for layer 4).<br>
+**Result:**<br>
+Marginally higher AUC score than the baseline. Epochs were increased from 50 to 150 as it was found that while using the 'Dropout'regularization technique, the accuracy score following each epoch was increasing at a more reduced rate than before and thus a greater number of epochs is required to reach a sufficiently high score.
+
+**Tuned neural network model performance**
+The tuned model resulted in a marginally improved accuracy score of 76.28% as shown below:
+<img src="./Diagram/tuned_nn_model_performance.PNG" alt="drawing" width="300" height = "150"/> <br>
+
 
 ### Comparing the performance of each model
 
