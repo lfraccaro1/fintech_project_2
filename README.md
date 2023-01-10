@@ -46,15 +46,21 @@ Below are samples of the plot used to study the vaccination pattern. Opinion que
 ### Establish the baseline model
 We decided to use the random forest machine learning model as our baseline for several reasons. First, random forests are known for their high accuracy and ability to handle large and complex datasets. This was important for us as we were working with a dataset that has a high number of features.
 
-Second, random forests are robust to overfitting. This means the models are less likely to produce poor generalisation performance when applied to new data. This was an important consideration for our project as we wanted to ensure the model would be able to generalise well to new examples and not just perform well on the training data. 
+Second, random forests are robust to overfitting. This means the models are less likely to produce poor generalisation performance when applied to new data. This was an important consideration for our project as we wanted to ensure the model would be able to generalise well to new examples and not just perform well on the training data.
 
 Last, random forest models are relatively simple to implement and do not require much fine-tuning, which we decided made it a good choice for a baseline model.
+
+**Performance of the baseline model** <br>
+<img src="./Diagram/class_rpt_baseline.jpg" alt="drawing" width="300" height = "130"/> <br>
+The baseline model has an accuracy score of 76.13%.
+
 
 ### Tune the baseline
 In this section, we explore both tuning parameters and tuning hyperparameters of the model.
 
 #### i. Features Selection
-Features selection involves reducing the number of input features used to train the model. To select which features to include, a [correlation matrix](./Diagram/corr.jpg) is computed to identify the features that are most correlated to the target variable. Four features with the highest absolute correlation value are used to define a new set of features, reducing the number of encoded input features from 31 to 4. The new set of features are ["age_group_65+ years","doctor_recc_seasonal", "opinion_seas_risk", "opinion_seas_vacc_effective"]. 
+
+Features selection involves reducing the number of input features used to train the model. To select which features to include, a [correlation matrix](./Diagram/corr.jpg) is computed to identify the features that are most correlated to the target variable. Four features with the highest absolute correlation value are used to define a new set of features, reducing the number of input features from 31 to 4. The new set of features are ["age_group_65+ years","doctor_recc_seasonal", "opinion_seas_risk", "opinion_seas_vacc_effective"]. 
 
 <img src="./Diagram/class_rpt_lessfeat.jpg" alt="drawing" width="300" height = "130"/> <br>
 
@@ -144,8 +150,6 @@ The baseline model has a reasonably high accuracy score of 76.13%. Both attempts
 
 The chosen simple neural network has similar predictive power as the baseline model. Further tuning may increase the accuracy and outperform the baseline model.
 
-
-
 ## Appendix 1
 The table below describes the features included in the dataset.
 
@@ -185,4 +189,7 @@ The table below describes the features included in the dataset.
 <img src="./Diagram/corr.jpg" alt="drawing" width="850" height = "650"/> 
 
 ## References
-* https://www.drivendata.org/competitions/66/flu-shot-learning/
+* Data source: https://www.drivendata.org/competitions/66/flu-shot-learning/
+* RandomizedSearchCV: https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.RandomizedSearchCV.html
+* GridSearchCV : https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html
+* Statistical Function (scipy.stats): https://docs.scipy.org/doc/scipy/reference/stats.html
