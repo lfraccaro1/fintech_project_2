@@ -120,37 +120,37 @@ The neural network model has an accuracy of 76.35%.
 
 #### Tuning the Parameters to Find the Ideal Neural Network
 
-The following hyperparameters were manipulated:
-*Input Features: 54<br>
-*Output Neuron(s): 1<br>
-*Loss: Binary Crossentropy<br>
-*Optimizer: SGD<br>
-*Metrics: Accuracy<br>
-*Epochs: 150<br>
+The following hyperparameters were manipulated:<br>
+* Input Features: 54<br>
+* Output Neuron(s): 1<br>
+* Loss: Binary Crossentropy<br>
+* Optimizer: SGD<br>
+* Metrics: Accuracy<br>
+* Epochs: 150<br>
 > *Layer 1*<br>
-*Hidden Nodes: 27<br>
-*Activation Function: Sigmoid<br>
-*Dropout Rate: 0.5<br>
+* Hidden Nodes: 27<br>
+* Activation Function: Sigmoid<br>
+* ropout Rate: 0.5<br>
 
 > *Layer 2*<br>
-*Hidden Nodes: 14<br>
-*Activation Function: Sigmoid<br>
-*Dropout Rate: 0.2<br>
+* Hidden Nodes: 14<br>
+* Activation Function: Sigmoid<br>
+* Dropout Rate: 0.2<br>
 
 > *Layer 3*<br>
-*Hidden Nodes: 7<br>
-*Activation Function: Sigmoid<br>
-*Dropout Rate: 0.2<br>
+* Hidden Nodes: 7<br>
+* Activation Function: Sigmoid<br>
+* Dropout Rate: 0.2<br>
 
 > *Layer 4*<br>
-*Hidden Nodes: 4<br>
-*Activation Function: Sigmoid<br>
+* Hidden Nodes: 4<br>
+* Activation Function: Sigmoid<br>
 
 > *Output Layer*<br>
-*Activation Function: Sigmoid
+* Activation Function: Sigmoid
 
 The tuned neural network model summary is provided in the table below. <br>
-<img src="./Diagram/tuned_nn_model_summary.png" alt="drawing" width="350" height = "200"/> <br>
+<img src="./Diagram/tuned_nn_model_summary.PNG" alt="drawing" width="350" height = "200"/> <br>
 
 **AUC SCORE:** 0.7628<br>
 **Changes from Baseline:**<br>
@@ -165,7 +165,7 @@ Marginally higher AUC score than the baseline. Epochs were increased from 50 to 
 
 **Tuned neural network model performance**
 The tuned model resulted in a marginally improved accuracy score of 76.28% as shown below:
-<img src="./Diagram/tuned_nn_model_performance.png" alt="drawing" width="350" height = "200"/> <br>
+<img src="./Diagram/tuned_nn_model_performance.PNG" alt="drawing" width="350" height = "200"/> <br>
 
 
 ### Comparing the performance of each model
