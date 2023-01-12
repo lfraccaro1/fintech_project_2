@@ -116,9 +116,9 @@ As the epoch increases, loss decreases from 0.68 down to c.0.45 and accuracy inc
 
 
 <img src="./Diagram/class_rpt_nn.jpg" alt="drawing" width="300" height = "130"/> <br>
-The neural network model has an accuracy of 76.35%.
+The neural network model has an accuracy of 76.43%.
 
-#### Tuning the Parameters to Find the Ideal Neural Network
+### Tuning the Parameters to Find the Ideal Neural Network
 
 The following hyperparameters were manipulated:<br>
 * Input Features: 54<br>
@@ -159,11 +159,11 @@ Addition of hidden layer 3, containing 7 neurons & Sigmoid activation function;<
 Addition of hidden layer 4, containing 4 neurons & Sigmoid activation function; <br>
 Epochs, 50 --> 150<br>
 Addition of dropout technique to prevent overfitting, with rate of 0.5 for input layer and 0.2 for layers 2 and 3 (no dropout for layer 4).<br>
-**Result:**<br>
-Marginally higher AUC score than the baseline. Epochs were increased from 50 to 150 as it was found that while using the 'Dropout'regularization technique, the accuracy score following each epoch was increasing at a more reduced rate than before and thus a greater number of epochs is required to reach a sufficiently high score.
+**Observation:**<br>
+Epochs were increased from 50 to 150 as it was found that while using the 'Dropout'regularization technique, the accuracy score following each epoch was increasing at a more reduced rate than before and thus a greater number of epochs is required to reach a sufficiently high score.
 
 **Tuned neural network model performance**
-The tuned model resulted in a marginally improved accuracy score of 76.28% as shown below:
+The tuned model has an accuracy score of 76.28% (slightly lower than the default neural network model):<br>
 <img src="./Diagram/tuned_nn_model_performance.PNG" alt="drawing" width="300" height = "150"/> <br>
 
 
@@ -175,7 +175,7 @@ The tuned model resulted in a marginally improved accuracy score of 76.28% as sh
 |**Tune i** : Reduced number of input features | 75.15%|
 |**Tune ii** : Hyperparameters tuning with RandomizedSearchCV | 77.18% |
 |**Tune iii** : Hyperparameters tuning with GridSearchCV | 77.28% |
-|**2nd ML** : Deep learning model | 76.35% |
+|**2nd ML** : Deep learning model | 76.43% |
 
 * **Reduced number of input features** - Limiting the number of features resulted in a slight decrease in accuracy but it resulted in a simpler and faster model. This method will be useful in cases where computational resources are limited or when interpretability of the model is as priority.
 
